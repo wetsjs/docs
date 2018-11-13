@@ -8,7 +8,7 @@
 
 ```bash
 $ yarn config set registry 'http://r.npm.sankuai.com'
-$ yarn create @mtfe/wets-app myapp
+$ yarn create @wets/wets-app myapp
 ```
 
 ## 启动小程序
@@ -92,11 +92,11 @@ export class HomePage extends Page {}
 创建一个新页面 **login**
 
 ```bash
-# 使用jsx语法需要安装 @mtfe/wets-types 这个包
-$ yarn add --dev @mtfe/wets-types
+# 使用jsx语法需要安装 @wets/wets-types 这个包
+$ yarn add --dev @wets/wets-types
 $ wets page add --template jsx login
 # 如果提示 wets 命令不存在，可以执行下面的命令
-$ yarn global add @mtfe/wets-cli
+$ yarn global add @wets/wets-cli
 ```
 
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/6C62725EC694DA4185C42D9DED7A6669.jpg)
@@ -115,13 +115,13 @@ $ yarn global add @mtfe/wets-cli
 
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/72B038E73765E0CBB4D42DC13BE1DFB7.jpg)
 
-> @mtfe/wets-tsx-loader 由 [@李续铖](https://wiki.sankuai.com/pages/viewpage.action?pageId=560196449) 同学开发
+> @wets/wets-tsx-loader 由 [@李续铖](https://wiki.sankuai.com/pages/viewpage.action?pageId=560196449) 同学开发
 
 ## 在小程序中使用 Redux
 
 ```bash
 # 安装Redux支持包
-$ yarn add --dev @mtfe/wets-redux redux-logger @types/node
+$ yarn add --dev @wets/wets-redux redux-logger @types/node
 
 # 创建redux的modules目录
 $ mkdir -p src/redux/modules
@@ -193,8 +193,8 @@ export default function configureStore() {
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/8AF985482F458DE5E3CBCB537A55795D.jpg)
 
 ```js
-import { App } from "@mtfe/wets";
-import { Provider } from "@mtfe/wets-redux";
+import { App } from "@wets/wets";
+import { Provider } from "@wets/wets-redux";
 
 import configureStore from "./redux/configureStore";
 
@@ -219,8 +219,8 @@ export class MyApp extends App {}
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/9325D7B269AB8363C9B029B94E189D5D.jpg)
 
 ```jsx
-import { Page } from "@mtfe/wets";
-import { connect } from "@mtfe/wets-redux";
+import { Page } from "@wets/wets";
+import { connect } from "@wets/wets-redux";
 import "./login.page.css";
 
 @Page.Conf({
@@ -267,7 +267,7 @@ export class LoginPage extends Page {
 
 ```bash
 # 安装Redux支持包
-$ yarn add --dev @mtfe/wets-mobx mobx
+$ yarn add --dev @wets/wets-mobx mobx
 
 # 创建redux的modules目录
 $ mkdir -p src/stores
@@ -298,7 +298,7 @@ import {
   runInAction,
   IObservableArray
 } from 'mobx';
-import { route } from '@mtfe/wets-mobx';
+import { route } from '@wets/wets-mobx';
 
 export type Topic = {
   title: string;
@@ -344,9 +344,9 @@ export default class Person {
 修改 **app.ts**
 
 ```js
-import { App } from "@mtfe/wets";
-import { Provider } from "@mtfe/wets-mobx";
-import { route } from "@mtfe/wets-mobx";
+import { App } from "@wets/wets";
+import { Provider } from "@wets/wets-mobx";
+import { route } from "@wets/wets-mobx";
 
 import store from "../src/stores";
 
@@ -374,8 +374,8 @@ export class MyApp extends App {
 创建 **src/pages/test/index.tsx** 文件
 
 ```jsx
-import { Page } from "@mtfe/wets";
-import { inject, observer, autorun } from "@mtfe/wets-mobx";
+import { Page } from "@wets/wets";
+import { inject, observer, autorun } from "@wets/wets-mobx";
 
 import "./test.page.css";
 import TestStore from "../../stores/test";
@@ -586,7 +586,7 @@ mutation {
 接下来是在小程序中使用 GraphQL 了
 
 ```bash
-$ yarn add --dev @mtfe/wets-graphql
+$ yarn add --dev @wets/wets-graphql
 ```
 
 修改 **src/app.ts**
@@ -594,8 +594,8 @@ $ yarn add --dev @mtfe/wets-graphql
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/FC1828DE4CC1B286CD98888F4DC6A7F9.jpg)
 
 ```js
-import { App } from "@mtfe/wets";
-import { Provider, Client, createNetworkInterface } from "@mtfe/wets-graphql";
+import { App } from "@wets/wets";
+import { Provider, Client, createNetworkInterface } from "@wets/wets-graphql";
 
 import configureStore from "./redux/configureStore";
 
@@ -635,9 +635,9 @@ export class MyApp extends App {}
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/8D8E730A19AD4543DF684F12DBD486A9.jpg)
 
 ```js
-import { Page } from "@mtfe/wets";
-import { connect } from "@mtfe/wets-redux";
-import { graphql, gql } from "@mtfe/wets-graphql";
+import { Page } from "@wets/wets";
+import { connect } from "@wets/wets-redux";
+import { graphql, gql } from "@wets/wets-graphql";
 import "./login.page.css";
 
 @Page.Conf({
@@ -807,7 +807,7 @@ module.exports = {
 在 **tsx** 中进行图片的处理的 loader
 
 ```bash
-$ yarn add --dev @mtfe/wets-image-loader
+$ yarn add --dev @wets/wets-image-loader
 ```
 
 ```js
@@ -816,7 +816,7 @@ const webpack = require("webpack");
 module.exports = {
   webpack: config => {
     config.module.rules[0].use.push({
-      loader: "@mtfe/wets-image-loader",
+      loader: "@wets/wets-image-loader",
       options: {
         limit: 8192
       }
