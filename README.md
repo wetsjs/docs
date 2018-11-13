@@ -7,7 +7,6 @@
 ## 创建小程序
 
 ```bash
-$ yarn config set registry 'http://r.npm.sankuai.com'
 $ yarn create @wets/wets-app myapp
 ```
 
@@ -115,7 +114,7 @@ $ yarn global add @wets/wets-cli
 
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/72B038E73765E0CBB4D42DC13BE1DFB7.jpg)
 
-> @wets/wets-tsx-loader 由 [@李续铖](https://wiki.sankuai.com/pages/viewpage.action?pageId=560196449) 同学开发
+> @wets/wets-tsx-loader 由 [@李续铖]() 同学开发
 
 ## 在小程序中使用 Redux
 
@@ -455,7 +454,7 @@ export class TestPage extends Page<any, IData> {
 }
 ```
 
-> 该插件由 [@周新凯](https://wiki.sankuai.com/pages/viewpage.action?pageId=560173181) 同学开发
+> 该插件由 [@周新凯]() 同学开发
 
 ## 使用 weui-wxss
 
@@ -834,9 +833,10 @@ render() {
 }
 ```
 
-> 该 loader 由 [@周新凯](https://wiki.sankuai.com/pages/viewpage.action?pageId=560173181) 同学开发
+> 该 loader 由 [@周新凯]() 同学开发
 
 # 由 wets 驱动的小程序项目
 
-- [会员买单小程序](http://git.sankuai.com/projects/SJST/repos/fe.vip-wxapp/browse)
-- [自餐点餐小程序](http://git.sankuai.com/projects/SJST/repos/fe.buffet-miniapp/browse)
+- 美团智慧餐厅
+- 美团收银商城
+- [会员买单小程序]()
