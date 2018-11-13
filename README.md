@@ -1,4 +1,4 @@
-# wets小程序开发框架文档
+# wets 小程序开发框架文档
 
 该教程讲的是如何使用 **wets** 小程序开发框架来进行小程序的开发
 
@@ -30,7 +30,7 @@ $ wets start
 
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/BB2CE718C53042BE5F78E6E009181593.jpg)
 
-新建小程序项目，填入小程序的AppID，更改项目目录
+新建小程序项目，填入小程序的 AppID，更改项目目录
 
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/0CBE2F118DBE9872AF0522779FC5A8E4.jpg)
 
@@ -63,12 +63,12 @@ myapp
 
 ```js
 // 页面的样式，使用precss https://github.com/jonathantneal/precss
-import './home.page.css';
-``` 
+import "./home.page.css";
+```
 
 ```js
 // 页面模板，实际是wxml
-import './home.page.html';
+import "./home.page.html";
 ```
 
 ```js
@@ -80,18 +80,17 @@ import './home.page.html';
 
 ```js
 // 页面对象，必须使用export，不可使用export default
-export class HomePage extends Page {
-
-}
+export class HomePage extends Page {}
 ```
 
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/E1B7E92B73B92EAA6E566129B5885B3B.jpg)
 
-经过 **wets** 处理后会创建如上图左侧4个文件，右侧就是小程序页面的注册函数。
+经过 **wets** 处理后会创建如上图左侧 4 个文件，右侧就是小程序页面的注册函数。
 
-## 在小程序中使用jsx
+## 在小程序中使用 jsx
 
 创建一个新页面 **login**
+
 ```bash
 # 使用jsx语法需要安装 @mtfe/wets-types 这个包
 $ yarn add --dev @mtfe/wets-types
@@ -118,7 +117,7 @@ $ yarn global add @mtfe/wets-cli
 
 > @mtfe/wets-tsx-loader 由 [@李续铖](https://wiki.sankuai.com/pages/viewpage.action?pageId=560196449) 同学开发
 
-## 在小程序中使用Redux
+## 在小程序中使用 Redux
 
 ```bash
 # 安装Redux支持包
@@ -134,21 +133,21 @@ $ mkdir -p src/redux/modules
 
 ```js
 const initalState = {
-  username: '',
-  password: '',
+  username: "",
+  password: ""
 };
 
 export default (state = initalState, action: any) => {
   switch (action.type) {
-    case 'CHANGE_USERNAME':
+    case "CHANGE_USERNAME":
       return {
         ...state,
-        username: action.payload,
+        username: action.payload
       };
-    case 'CHANGE_PASSWORD':
+    case "CHANGE_PASSWORD":
       return {
         ...state,
-        password: action.payload,
+        password: action.payload
       };
     default:
       return state;
@@ -161,12 +160,12 @@ export default (state = initalState, action: any) => {
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/393C33A70F4505341F9180CC3E5D4B6E.jpg)
 
 ```js
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import login from './modules/login';
+import login from "./modules/login";
 
 export default combineReducers({
-  login,
+  login
 });
 ```
 
@@ -175,14 +174,14 @@ export default combineReducers({
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/1D1A8ED7F1AC13A7D80A9AF388CD1FD0.jpg)
 
 ```js
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from "redux";
 
-import reducers from './reducers';
+import reducers from "./reducers";
 
 export default function configureStore() {
   const middleware = [];
-  if (process.env.NODE_ENV !== 'production') {
-    const { createLogger } = require('redux-logger');
+  if (process.env.NODE_ENV !== "production") {
+    const { createLogger } = require("redux-logger");
     middleware.push(createLogger());
   }
   return createStore(reducers, applyMiddleware(...middleware));
@@ -194,54 +193,51 @@ export default function configureStore() {
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/8AF985482F458DE5E3CBCB537A55795D.jpg)
 
 ```js
-import { App } from '@mtfe/wets';
-import { Provider } from '@mtfe/wets-redux';
+import { App } from "@mtfe/wets";
+import { Provider } from "@mtfe/wets-redux";
 
-import configureStore from './redux/configureStore';
+import configureStore from "./redux/configureStore";
 
 const store = configureStore();
 
 @App.Conf({
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#0F1012',
-    navigationBarTextStyle: 'white',
-    backgroundColor: '#EFEFF4',
-  },
+    backgroundTextStyle: "light",
+    navigationBarBackgroundColor: "#0F1012",
+    navigationBarTextStyle: "white",
+    backgroundColor: "#EFEFF4"
+  }
 })
 @Provider(store)
-export class MyApp extends App {
-}
+export class MyApp extends App {}
 ```
 
 这样就配置完了，接下来就可以像在 **React** 中使用 **Redux** 一样了
 
 修改 **src/pages/login/login.page.tsx**
 
-![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/9325D7B269AB8363C9B029B94E189D5D.jpg8)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/9325D7B269AB8363C9B029B94E189D5D.jpg)
 
 ```jsx
-import { Page } from '@mtfe/wets';
-import { connect } from '@mtfe/wets-redux';
-import './login.page.css';
+import { Page } from "@mtfe/wets";
+import { connect } from "@mtfe/wets-redux";
+import "./login.page.css";
 
 @Page.Conf({
-  navigationBarTitleText: 'LoginPage',
+  navigationBarTitleText: "LoginPage"
 })
-@connect(
-  (state: any) => state.login,
-)
+@connect((state: any) => state.login)
 export class LoginPage extends Page {
   onUsernameChange(event: any) {
     this.props.dispatch({
-      type: 'CHANGE_USERNAME',
-      payload: event.detail.value,
+      type: "CHANGE_USERNAME",
+      payload: event.detail.value
     });
   }
   onPasswordChange(event: any) {
     this.props.dispatch({
-      type: 'CHANGE_PASSWORD',
-      payload: event.detail.value,
+      type: "CHANGE_PASSWORD",
+      payload: event.detail.value
     });
   }
   render() {
@@ -250,18 +246,12 @@ export class LoginPage extends Page {
         <text>Login Page</text>
         <view style="height: 30px;" />
         <view>
-          用户名: 
-          <input
-            value={this.data.username}
-            bindinput={this.onUsernameChange}
-          />
+          用户名:
+          <input value={this.data.username} bindinput={this.onUsernameChange} />
         </view>
         <view>
-          密码: 
-          <input
-            value={this.data.password}
-            bindinput={this.onPasswordChange}
-          />
+          密码:
+          <input value={this.data.password} bindinput={this.onPasswordChange} />
         </view>
       </view>
     );
@@ -271,9 +261,9 @@ export class LoginPage extends Page {
 
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/C8056D857755109FE7E6D372E5E88F82.jpg)
 
+## 在小程序中使用 Mobx
 
-## 在小程序中使用Mobx
-提供了5个接口: **Provider、inject、observer、route、autorun**，其中route用于在store中结合action方便的发送HTTP请求，详情请见下面的**getTopicList 方法**
+提供了 5 个接口: **Provider、inject、observer、route、autorun**，其中 route 用于在 store 中结合 action 方便的发送 HTTP 请求，详情请见下面的**getTopicList 方法**
 
 ```bash
 # 安装Redux支持包
@@ -284,19 +274,22 @@ $ mkdir -p src/stores
 ```
 
 创建 **src/stores/index.ts** 文件
+
 ```js
-import { useStrict } from 'mobx';
-import Test from './test';
+import { useStrict } from "mobx";
+import Test from "./test";
 
 useStrict(true);
 const test = new Test();
 const store = {
-  test,
+  test
 };
 
 export default store;
 ```
+
 创建 **src/stores/test.ts** 文件
+
 ```js
 import {
   observable,
@@ -320,7 +313,7 @@ export default class Person {
   @computed
   get fullRandom() {
     return '帅帅的' + this.random;
-  }  
+  }
 
   @action
   changeRandom() {
@@ -347,41 +340,45 @@ export default class Person {
   }
 }
 ```
-修改 **app.ts**
-```js
-import { App } from '@mtfe/wets';
-import { Provider } from '@mtfe/wets-mobx';
-import { route } from '@mtfe/wets-mobx';
 
-import store from '../src/stores';
+修改 **app.ts**
+
+```js
+import { App } from "@mtfe/wets";
+import { Provider } from "@mtfe/wets-mobx";
+import { route } from "@mtfe/wets-mobx";
+
+import store from "../src/stores";
 
 route.prototype.setUrlOption({
-  protocol: 'https',
-  host: 'cnodejs.org'
+  protocol: "https",
+  host: "cnodejs.org"
 });
 
 @App.Conf({
   window: {
-    navigationBarBackgroundColor: '#fff',
-    navigationBarTextStyle: 'black',
-    backgroundColor: '#fff',
-  },
+    navigationBarBackgroundColor: "#fff",
+    navigationBarTextStyle: "black",
+    backgroundColor: "#fff"
+  }
 })
 @Provider({
-  store,
+  store
 })
 export class MyApp extends App {
   store: any;
 }
 ```
+
 这样就配置完了，接下来就可以像在 **React** 中使用 **mobx** 一样了
 创建 **src/pages/test/index.tsx** 文件
-```jsx
-import { Page } from '@mtfe/wets';
-import { inject, observer, autorun } from '@mtfe/wets-mobx';
 
-import './test.page.css';
-import TestStore from '../../stores/test';
+```jsx
+import { Page } from "@mtfe/wets";
+import { inject, observer, autorun } from "@mtfe/wets-mobx";
+
+import "./test.page.css";
+import TestStore from "../../stores/test";
 
 interface IData {
   test: TestStore;
@@ -391,16 +388,16 @@ interface IData {
 }
 
 @Page.Conf({
-  navigationBarTitleText: 'TestPage'
+  navigationBarTitleText: "TestPage"
 })
-@inject('test')
+@inject("test")
 @observer()
 export class TestPage extends Page<any, IData> {
   onLoad() {
     console.log(this.data);
     this.setData({
       tabIndex: 0,
-      tabArray: ['ask', 'share', 'job', 'good']
+      tabArray: ["ask", "share", "job", "good"]
     });
     autorun(() =>
       this.setData({
@@ -418,7 +415,7 @@ export class TestPage extends Page<any, IData> {
   }
 
   bindPickerChange(e: any) {
-    console.log('picker发送选择改变，携带值为', e.detail.value);
+    console.log("picker发送选择改变，携带值为", e.detail.value);
     this.setData({
       tabIndex: e.detail.value
     });
@@ -426,24 +423,24 @@ export class TestPage extends Page<any, IData> {
 
   render() {
     return (
-      <view className='test-page'>
+      <view className="test-page">
         <text>{this.data.fullRandom}</text>
         <button bindtap={this.test}>changeRandom</button>
-        <view className='section'>
-          <view className='section__title'>tab选择器</view>
+        <view className="section">
+          <view className="section__title">tab选择器</view>
           <picker
-            mode='selector'
+            mode="selector"
             bindchange={this.bindPickerChange}
             value={this.data.tabIndex}
             range={this.data.tabArray}
           >
-            <view className='picker'>
+            <view className="picker">
               当前选择: {this.data.tabArray[this.data.tabIndex]}
             </view>
           </picker>
         </view>
         <button bindtap={this.getTopicList}>get topic list</button>
-        <view className='topicList'>
+        <view className="topicList">
           {this.data.test.topicList.map((topic, index) => {
             return (
               <view key={index}>
@@ -460,7 +457,7 @@ export class TestPage extends Page<any, IData> {
 
 > 该插件由 [@周新凯](https://wiki.sankuai.com/pages/viewpage.action?pageId=560173181) 同学开发
 
-## 使用weui-wxss
+## 使用 weui-wxss
 
 ```bash
 $ yarn add --dev weui-wxss
@@ -469,13 +466,13 @@ $ yarn add --dev weui-wxss
 新建 **src/app.css**
 
 ```css
-@import 'weui-wxss/dist/app.wxss';
+@import "weui-wxss/dist/app.wxss";
 ```
 
 修改 **src/app.ts** 加入下面的代码
 
 ```js
-import './app.css';
+import "./app.css";
 ```
 
 修改 **src/pages/login/login.page.tsx** 的 `render` 函数返回
@@ -519,11 +516,11 @@ render() {
 
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/8CD345266772EFA572116CC467192311.jpg)
 
-## 在小程序中使用GraphQL
+## 在小程序中使用 GraphQL
 
 接下来我们要完成一个登录的效果
 
-为了快速进行GraphQL服务的开发，我选择在 [https://www.graph.cool](https://www.graph.cool) 上建立一个测试的项目。
+为了快速进行 GraphQL 服务的开发，我选择在 [https://www.graph.cool](https://www.graph.cool) 上建立一个测试的项目。
 
 第一步登录 [https://www.graph.cool](https://www.graph.cool) ，进入 **console** 。
 
@@ -544,23 +541,23 @@ extend type Mutation {
 
 ```js
 module.exports = function login(event) {
-  const data = event.data
-  if (data.username === 'admin' && data.password === 'admin') {
+  const data = event.data;
+  if (data.username === "admin" && data.password === "admin") {
     return {
       data: {
-        token: 'true',
-      },
+        token: "true"
+      }
     };
   }
   return {
-    error: '登录失败，用户名或密码不正确！',
+    error: "登录失败，用户名或密码不正确！"
   };
-}
+};
 ```
 
 第三步测试
 
-![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/3FFE01D8D05273ABC5ED15D2485C0560.jpg1)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/3FFE01D8D05273ABC5ED15D2485C0560.jpg)
 
 点击左侧下方的 **PLAYGROUND**
 
@@ -584,9 +581,9 @@ mutation {
 
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/C7DD4A409C12BB32A78BA71E934A709E.jpg)
 
-至此，GraphQL服务就完成了。
+至此，GraphQL 服务就完成了。
 
-接下来是在小程序中使用GraphQL了
+接下来是在小程序中使用 GraphQL 了
 
 ```bash
 $ yarn add --dev @mtfe/wets-graphql
@@ -597,37 +594,36 @@ $ yarn add --dev @mtfe/wets-graphql
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/FC1828DE4CC1B286CD98888F4DC6A7F9.jpg)
 
 ```js
-import { App } from '@mtfe/wets';
-import { Provider, Client, createNetworkInterface } from '@mtfe/wets-graphql';
+import { App } from "@mtfe/wets";
+import { Provider, Client, createNetworkInterface } from "@mtfe/wets-graphql";
 
-import configureStore from './redux/configureStore';
+import configureStore from "./redux/configureStore";
 
-import './app.css';
+import "./app.css";
 
 const store = configureStore();
 
 const networkInterface = createNetworkInterface({
-  url: 'https://api.graph.cool/simple/v1/cj93kov7o176g0125q2helcni',
+  url: "https://api.graph.cool/simple/v1/cj93kov7o176g0125q2helcni"
 });
 
 const client = new Client({
-  networkInterface,
+  networkInterface
 });
 
 @App.Conf({
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#0F1012',
-    navigationBarTextStyle: 'white',
-    backgroundColor: '#EFEFF4',
-  },
+    backgroundTextStyle: "light",
+    navigationBarBackgroundColor: "#0F1012",
+    navigationBarTextStyle: "white",
+    backgroundColor: "#EFEFF4"
+  }
 })
 @Provider({
   store,
   client
 })
-export class MyApp extends App {
-}
+export class MyApp extends App {}
 ```
 
 修改 **src/pages/login/login.page.tsx**
@@ -639,17 +635,15 @@ export class MyApp extends App {
 ![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/8D8E730A19AD4543DF684F12DBD486A9.jpg)
 
 ```js
-import { Page } from '@mtfe/wets';
-import { connect } from '@mtfe/wets-redux';
-import { graphql, gql } from '@mtfe/wets-graphql';
-import './login.page.css';
+import { Page } from "@mtfe/wets";
+import { connect } from "@mtfe/wets-redux";
+import { graphql, gql } from "@mtfe/wets-graphql";
+import "./login.page.css";
 
 @Page.Conf({
-  navigationBarTitleText: 'LoginPage',
+  navigationBarTitleText: "LoginPage"
 })
-@connect(
-  (state: any) => state.login,
-)
+@connect((state: any) => state.login)
 @graphql(gql`
   mutation login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
@@ -660,33 +654,36 @@ import './login.page.css';
 export class LoginPage extends Page {
   onUsernameChange(event: any) {
     this.props.dispatch({
-      type: 'CHANGE_USERNAME',
-      payload: event.detail.value,
+      type: "CHANGE_USERNAME",
+      payload: event.detail.value
     });
   }
   onPasswordChange(event: any) {
     this.props.dispatch({
-      type: 'CHANGE_PASSWORD',
-      payload: event.detail.value,
+      type: "CHANGE_PASSWORD",
+      payload: event.detail.value
     });
   }
   login() {
     const { username, password } = this.data;
-    this.props.login({
-      variables: {
-        username,
-        password,
-      },
-    }).then(() => {
-      wx.showToast({
-        title: '登录成功',
+    this.props
+      .login({
+        variables: {
+          username,
+          password
+        }
+      })
+      .then(() => {
+        wx.showToast({
+          title: "登录成功"
+        });
+      })
+      .catch(() => {
+        wx.showModal({
+          title: "提示",
+          content: "登录失败"
+        });
       });
-    }).catch(() => {
-      wx.showModal({
-        title: '提示',
-        content: '登录失败',
-      });
-    });
   }
   render() {
     return (
@@ -718,7 +715,9 @@ export class LoginPage extends Page {
           </view>
         </view>
         <view className="weui-btn-area">
-          <button className="weui-btn" type="primary" bindtap={this.login}>登录</button>
+          <button className="weui-btn" type="primary" bindtap={this.login}>
+            登录
+          </button>
         </view>
       </view>
     );
@@ -740,7 +739,7 @@ export class LoginPage extends Page {
 
 ## wets.config.js
 
-该文件是wets的配置文件，目前支持 **webpack** 的配置。
+该文件是 wets 的配置文件，目前支持 **webpack** 的配置。
 
 默认情况下项目目录中不会创建 **wets.config.js** 文件，可以手动在项目目录中创建该文件
 
@@ -752,78 +751,78 @@ $ vim wets.config.js
 module.exports = {
   webpack: config => {
     return config;
-  },
+  }
 };
 ```
 
 这样就可以配置一个 **webpack** 的插件了。
 
 ```js
-const webpack = require('webpack');
+const webpack = require("webpack");
 
 module.exports = {
   webpack: config => {
     config.plugins.push(
       new webpack.DefinePlugin({
-        'process.env': {
-          APP_ENV: JSON.stringify(process.env.APP_ENV || 'local'),
-        },
-      }),
+        "process.env": {
+          APP_ENV: JSON.stringify(process.env.APP_ENV || "local")
+        }
+      })
     );
     return config;
-  },
+  }
 };
 ```
 
-我想要处理 **svg** 图片时就可以添加一个loader
+我想要处理 **svg** 图片时就可以添加一个 loader
 
 ```js
-const webpack = require('webpack');
+const webpack = require("webpack");
 
 module.exports = {
   webpack: config => {
     config.plugins.push(
       new webpack.DefinePlugin({
-        'process.env': {
-          APP_ENV: JSON.stringify(process.env.APP_ENV || 'local'),
-        },
-      }),
+        "process.env": {
+          APP_ENV: JSON.stringify(process.env.APP_ENV || "local")
+        }
+      })
     );
     config.module.rules.push({
       test: /\.(svg)$/,
       use: [
         {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
-            limit: 8192,
-          },
-        },
-      ],
+            limit: 8192
+          }
+        }
+      ]
     });
     return config;
-  },
+  }
 };
 ```
 
-在 **tsx** 中进行图片的处理的loader
+在 **tsx** 中进行图片的处理的 loader
 
 ```bash
 $ yarn add --dev @mtfe/wets-image-loader
 ```
 
 ```js
-const webpack = require('webpack');
+const webpack = require("webpack");
 
 module.exports = {
   webpack: config => {
     config.module.rules[0].use.push({
-      loader: '@mtfe/wets-image-loader',
+      loader: "@mtfe/wets-image-loader",
       options: {
-        limit: 8192,
-      },
+        limit: 8192
+      }
     });
     return config;
-  },
+  }
 };
 ```
 
@@ -835,9 +834,9 @@ render() {
 }
 ```
 
-> 该loader由 [@周新凯](https://wiki.sankuai.com/pages/viewpage.action?pageId=560173181) 同学开发
+> 该 loader 由 [@周新凯](https://wiki.sankuai.com/pages/viewpage.action?pageId=560173181) 同学开发
 
-# 由wets驱动的小程序项目
+# 由 wets 驱动的小程序项目
 
 - [会员买单小程序](http://git.sankuai.com/projects/SJST/repos/fe.vip-wxapp/browse)
 - [自餐点餐小程序](http://git.sankuai.com/projects/SJST/repos/fe.buffet-miniapp/browse)
