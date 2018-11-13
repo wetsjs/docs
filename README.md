@@ -22,23 +22,23 @@ $ wets start
 
 2. 打开 **微信开发者工具**
 
-![IMAGE](resources/6101ED3912ED75166BC4229F7755FF8A.jpg =117x259)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/6101ED3912ED75166BC4229F7755FF8A.jpg)
 
-![IMAGE](resources/7D5BBC1D308D31058486C9B4BE079DEA.jpg =334x474)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/7D5BBC1D308D31058486C9B4BE079DEA.jpg)
 
 选择小程序项目
 
-![IMAGE](resources/BB2CE718C53042BE5F78E6E009181593.jpg =411x474)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/BB2CE718C53042BE5F78E6E009181593.jpg)
 
 新建小程序项目，填入小程序的AppID，更改项目目录
 
-![IMAGE](resources/0CBE2F118DBE9872AF0522779FC5A8E4.jpg =712x426)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/0CBE2F118DBE9872AF0522779FC5A8E4.jpg)
 
 选择 `myapp/dist` 目录
 
 ## 小程序目录结构说明
 
-![IMAGE](resources/33D0CED413A77E14528F7662BC28B9EA.jpg =861x544)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/33D0CED413A77E14528F7662BC28B9EA.jpg)
 
 ```bash
 myapp
@@ -57,7 +57,7 @@ myapp
 
 **home.page.ts** 说明
 
-![IMAGE](resources/30206B5FE566A035FD84563FA68E96B4.jpg =861x544)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/30206B5FE566A035FD84563FA68E96B4.jpg)
 
 该文件表示了一个完整的页面，包含样式、模板、配置和代码。
 
@@ -85,7 +85,7 @@ export class HomePage extends Page {
 }
 ```
 
-![IMAGE](resources/E1B7E92B73B92EAA6E566129B5885B3B.jpg =861x544)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/E1B7E92B73B92EAA6E566129B5885B3B.jpg)
 
 经过 **wets** 处理后会创建如上图左侧4个文件，右侧就是小程序页面的注册函数。
 
@@ -100,21 +100,21 @@ $ wets page add --template jsx login
 $ yarn global add @mtfe/wets-cli
 ```
 
-![IMAGE](resources/6C62725EC694DA4185C42D9DED7A6669.jpg =861x544)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/6C62725EC694DA4185C42D9DED7A6669.jpg)
 
 在主页面中增加一个跳转到登录页面的按钮
 
-![IMAGE](resources/EECECF7778DA8400E9078CDBBF99C86A.jpg =861x544)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/EECECF7778DA8400E9078CDBBF99C86A.jpg)
 
-![IMAGE](resources/BBCFBD4D67D0D0A9182620D00D2C62BE.jpg =392x687)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/BBCFBD4D67D0D0A9182620D00D2C62BE.jpg)
 
-![IMAGE](resources/1A74780E5F2644AAA30CED641DEDDD2B.jpg =390x687)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/1A74780E5F2644AAA30CED641DEDDD2B.jpg)
 
 一个循环遍历的例子
 
-![IMAGE](resources/620093527303B5845515F72DFDC73CEB.jpg =861x591)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/620093527303B5845515F72DFDC73CEB.jpg)
 
-![IMAGE](resources/72B038E73765E0CBB4D42DC13BE1DFB7.jpg =389x685)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/72B038E73765E0CBB4D42DC13BE1DFB7.jpg)
 
 > @mtfe/wets-tsx-loader 由 [@李续铖](https://wiki.sankuai.com/pages/viewpage.action?pageId=560196449) 同学开发
 
@@ -130,7 +130,7 @@ $ mkdir -p src/redux/modules
 
 创建 **src/redux/redux/modules/login.ts** 文件
 
-![IMAGE](resources/67645E2A15CD31229C8C188240ED2F9B.jpg =957x567)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/67645E2A15CD31229C8C188240ED2F9B.jpg)
 
 ```js
 const initalState = {
@@ -158,7 +158,7 @@ export default (state = initalState, action: any) => {
 
 创建 **src/redux/reducers.ts** 文件
 
-![IMAGE](resources/393C33A70F4505341F9180CC3E5D4B6E.jpg =957x567)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/393C33A70F4505341F9180CC3E5D4B6E.jpg)
 
 ```js
 import { combineReducers } from 'redux';
@@ -172,7 +172,7 @@ export default combineReducers({
 
 创建 **src/redux/configureStore.ts** 文件
 
-![IMAGE](resources/1D1A8ED7F1AC13A7D80A9AF388CD1FD0.jpg =957x567)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/1D1A8ED7F1AC13A7D80A9AF388CD1FD0.jpg)
 
 ```js
 import { createStore, applyMiddleware } from 'redux';
@@ -191,7 +191,7 @@ export default function configureStore() {
 
 修改 **app.ts**
 
-![IMAGE](resources/8AF985482F458DE5E3CBCB537A55795D.jpg =957x567)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/8AF985482F458DE5E3CBCB537A55795D.jpg)
 
 ```js
 import { App } from '@mtfe/wets';
@@ -218,7 +218,7 @@ export class MyApp extends App {
 
 修改 **src/pages/login/login.page.tsx**
 
-![IMAGE](resources/9325D7B269AB8363C9B029B94E189D5D.jpg =957x1058)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/9325D7B269AB8363C9B029B94E189D5D.jpg8)
 
 ```jsx
 import { Page } from '@mtfe/wets';
@@ -269,7 +269,7 @@ export class LoginPage extends Page {
 }
 ```
 
-![IMAGE](resources/C8056D857755109FE7E6D372E5E88F82.jpg =894x286)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/C8056D857755109FE7E6D372E5E88F82.jpg)
 
 
 ## 在小程序中使用Mobx
@@ -517,7 +517,7 @@ render() {
 
 最终效果
 
-![IMAGE](resources/8CD345266772EFA572116CC467192311.jpg =389x218)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/8CD345266772EFA572116CC467192311.jpg)
 
 ## 在小程序中使用GraphQL
 
@@ -528,9 +528,9 @@ render() {
 第一步登录 [https://www.graph.cool](https://www.graph.cool) ，进入 **console** 。
 
 第二步创建 **FUNCTION**
-![IMAGE](resources/6178A66BEA8AE691F9513E7C170D51F3.jpg =753x349)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/6178A66BEA8AE691F9513E7C170D51F3.jpg)
 
-![IMAGE](resources/B67B8D52F6A68E56FDFE249ADE3D7C66.jpg =825x587)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/B67B8D52F6A68E56FDFE249ADE3D7C66.jpg)
 
 ```
 type LoginPayload {
@@ -560,7 +560,7 @@ module.exports = function login(event) {
 
 第三步测试
 
-![IMAGE](resources/3FFE01D8D05273ABC5ED15D2485C0560.jpg =1172x751)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/3FFE01D8D05273ABC5ED15D2485C0560.jpg1)
 
 点击左侧下方的 **PLAYGROUND**
 
@@ -582,7 +582,7 @@ mutation {
 }
 ```
 
-![IMAGE](resources/C7DD4A409C12BB32A78BA71E934A709E.jpg =536x580)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/C7DD4A409C12BB32A78BA71E934A709E.jpg)
 
 至此，GraphQL服务就完成了。
 
@@ -594,7 +594,7 @@ $ yarn add --dev @mtfe/wets-graphql
 
 修改 **src/app.ts**
 
-![IMAGE](resources/FC1828DE4CC1B286CD98888F4DC6A7F9.jpg =957x729)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/FC1828DE4CC1B286CD98888F4DC6A7F9.jpg)
 
 ```js
 import { App } from '@mtfe/wets';
@@ -632,11 +632,11 @@ export class MyApp extends App {
 
 修改 **src/pages/login/login.page.tsx**
 
-![IMAGE](resources/C542EADF67C0BE66A062692915E63B98.jpg =957x729)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/C542EADF67C0BE66A062692915E63B98.jpg)
 
-![IMAGE](resources/007E175AAFB76418663D249C6BBABE34.jpg =957x729)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/007E175AAFB76418663D249C6BBABE34.jpg)
 
-![IMAGE](resources/8D8E730A19AD4543DF684F12DBD486A9.jpg =957x729)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/8D8E730A19AD4543DF684F12DBD486A9.jpg)
 
 ```js
 import { Page } from '@mtfe/wets';
@@ -726,13 +726,13 @@ export class LoginPage extends Page {
 }
 ```
 
-![IMAGE](resources/86166CB0C59AEB244B32A59E93E4C642.jpg =393x684)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/86166CB0C59AEB244B32A59E93E4C642.jpg)
 
-![IMAGE](resources/5310E261A910E3D21F01E8EE29D7C379.jpg =936x402)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/5310E261A910E3D21F01E8EE29D7C379.jpg)
 
-![IMAGE](resources/E4811F7B053BC0A225AB34C121762CFD.jpg =387x682)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/E4811F7B053BC0A225AB34C121762CFD.jpg)
 
-![IMAGE](resources/5563E962F8B97CF6635FAF5FFD79FAE5.jpg =736x427)
+![IMAGE](https://raw.githubusercontent.com/wetsjs/docs/master/resources/5563E962F8B97CF6635FAF5FFD79FAE5.jpg)
 
 至此就完成了登录的功能了。
 
